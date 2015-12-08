@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<students>
+    <student>
+        <firstName>fname1</firstName>
+        <lastName>flname1</lastName>
+        <resultMean>0.0</resultMean>
+        <subjects>
+            <subject>
+                <result>22</result>
+            </subject>
+            <subject>
+                <result>54</result>
+            </subject>
+            <subject>
+                <result>48</result>
+            </subject>
+        </subjects>
+    </student>
+    <student>
+        <firstName>fname2</firstName>
+        <lastName>lname2</lastName>
+        <resultMean>0.0</resultMean>
+        <subjects>
+            <subject>
+                <result>55</result>
+            </subject>
+            <subject>
+                <result>12</result>
+            </subject>
+            <subject>
+                <result>98</result>
+            </subject>
+        </subjects>
+    </student>
+</students>
