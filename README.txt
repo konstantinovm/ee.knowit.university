@@ -9,8 +9,6 @@ BUILDING APPLICATION
 Run "mvn package" in the projects root catalog. 
 (Maven installation instructions: https://maven.apache.org/install.html)
 
-This option is needed if you run 
-
 RUNNING APPLICATION
 =================
 Execute runnable jar 
