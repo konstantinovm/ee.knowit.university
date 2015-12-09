@@ -18,7 +18,7 @@ public class StudentStatisticsTest
 		Student student = new Student();
 		student.setSubjects(Arrays.asList(new Subject[] {}));
 		StudentStatistics stats = new StudentStatistics(student);
-		assertEquals(0, stats.getAverage(), 0);
+		assertEquals(0, stats.getAverageResult(), 0);
 	}
 	
 	
@@ -28,6 +28,6 @@ public class StudentStatisticsTest
 		Student student = new Student();
 		student.setSubjects(Arrays.asList(new Subject[] {new Subject(52), new Subject(23), new Subject(106), new Subject(2)}));
 		StudentStatistics stats = new StudentStatistics(student);
-		assertEquals(45.75, stats.getAverage(), 0);
+		assertEquals(45.75, stats.getAverageResult(), 0);
 	}
 }

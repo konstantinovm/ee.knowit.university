@@ -13,18 +13,23 @@ public class Main {
 	private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
 	public static void main(String[] args) {
-		Display display = Display.getDefault();
-		
-		Shell shell = new StudentsListUI().getShell();
-
-		shell.open();
-		shell.layout();
-
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch()) {
-				display.sleep();
-
+		try {
+			Display display = Display.getDefault();
+			
+			Shell shell = new StudentsListUI().getShell();
+	
+			shell.open();
+			shell.layout();
+	
+			while (!shell.isDisposed()) {
+				if (!display.readAndDispatch()) {
+					display.sleep();
+	
+				}
 			}
+		} catch (Exception e) {
+			logger.error(e.getMessage(), e);
+			return;
 		}
 	}
 	
