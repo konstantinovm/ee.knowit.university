@@ -6,15 +6,27 @@ Currently build profiles are setup only for Windows (no possibility to test buil
 
 BUILDING APPLICATION
 =================
-Run "mvn package" in the projects root catalog. 
+CMD:
+Run "mvn package -P <profile corresponding to your OS>" in the projects root catalog.
+Available proflies are:
+	- windows64 (enabled by default)
+	- windows32 
+	- macosx32
+	- macosx64
+	- linux32
+	- linux64
 (Maven installation instructions: https://maven.apache.org/install.html)
 
-This option is needed if you run 
+Eclipse/Other IDE with maven plugin:
+	set the following to the profile, which corresponds to your OS
+		<activation>
+	      <activeByDefault>true</activeByDefault>
+	    </activation>
 
 RUNNING APPLICATION
 =================
 Execute runnable jar 
 	1) if using included built application (tested for Windows x64 only)
-		a) double click on bin/university_*.jar (choose file which corresponds to your OP)
+		a) double click on bin(target)/university_*.jar (choose file which corresponds to your OP)
 		b) or call "java -jar university.jar" in cmd opened in /bin
 
