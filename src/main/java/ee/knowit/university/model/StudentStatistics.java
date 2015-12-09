@@ -1,5 +1,9 @@
 package ee.knowit.university.model;
 
+
+/**
+ * Wrapper for Student with additional data/logic
+ */
 public class StudentStatistics 
 {
 	protected Student student;
@@ -19,11 +23,11 @@ public class StudentStatistics
 		this.student = student;
 	}
 
-	public double getAverage() {
+	public double getAverageResult() {
 		return average;
 	}
 
-	public void setAverage(double average) {
+	public void setAverageResult(double average) {
 		this.average = average;
 	}
 	

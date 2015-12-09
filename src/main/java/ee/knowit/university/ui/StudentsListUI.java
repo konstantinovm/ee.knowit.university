@@ -1,8 +1,6 @@
 package ee.knowit.university.ui;
 
 import static java.util.Comparator.comparing;
-
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,8 +29,6 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import ee.knowit.university.Main;
 import ee.knowit.university.model.Student;
 import ee.knowit.university.model.StudentStatistics;
 import ee.knowit.university.model.xml.InvalidSourceXMLContentException;
@@ -90,35 +86,28 @@ public class StudentsListUI
 				if (path == null) return;
 
 				List<Student> students;
-				List<StudentStatistics> studentStatisticsList; 
 				
 				try {
 					students = StudentsReader.getInstance().read(new FileInputStream(path));
 				} catch (FileNotFoundException | InvalidSourceXMLContentException e) {
-					handleException(String.format("Problem parsing %s ", path), e);
+					handleError(String.format("Problem parsing %s ", path), e);
 					return;
 				}
 				
-				//try {
-					studentStatisticsList = students.stream().map(StudentStatistics::new).collect(Collectors.toList());
-				/*} catch (ClassCastException e) { //should happen when list of students is actually list of something else
-					handleException(String.format("Problem parsing %s. Incorrect file format.", path), e);
-					return;
-				}*/
-					
-				if(studentStatisticsList.size() == 0) handleException(String.format("No student data found in %s. Please refer to the sample.", path), null);
+				List<StudentStatistics> studentStatisticsList = students.stream().map(StudentStatistics::new).collect(Collectors.toList());	
+				if(studentStatisticsList.size() == 0) handleError(String.format("No student data found in %s. Please refer to the sample.", path), null);
 					
 				table.removeAll();
 
 				studentStatisticsList.stream()
-				.sorted(comparing(StudentStatistics::getAverage)
+				.sorted(comparing(StudentStatistics::getAverageResult)
 						.thenComparing(s -> s.getStudent().getFirstName())
 						.thenComparing(s -> s.getStudent().getLastName()))
 				.forEachOrdered(s -> new TableItem(table, SWT.NONE)
 						.setText(new String[]{ 
 								s.getStudent().getFirstName(),  
 								s.getStudent().getLastName(),
-								FORMATTER.format(s.getAverage())}));
+								FORMATTER.format(s.getAverageResult())}));
 							
 				table.redraw();
 			}
@@ -145,7 +134,7 @@ public class StudentsListUI
 		return shell;
 	}
 	
-	public void handleException(String displayMessage, Exception e)  {
+	public void handleError(String displayMessage, Exception e)  {
 		MessageBox messageBox = new MessageBox(shell, SWT.ICON_WARNING | SWT.OK );
 		messageBox.setText("Error");
 		StringBuilder sb = new StringBuilder(displayMessage);
@@ -173,7 +162,7 @@ public class StudentsListUI
 			in.close();
 			out.close();
 		} catch (IOException e) {
-			handleException("", e);
+			handleError("", e);
 			return;
 		} 
 		temp.deleteOnExit();
