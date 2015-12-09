@@ -14,9 +14,7 @@ This option is needed if you run
 RUNNING APPLICATION
 =================
 Execute runnable jar 
-	1) if using included built application (built for Windows x64)
-		a) double click on bin/university.jar
+	1) if using included built application (tested for Windows x64 only)
+		a) double click on bin/university_*.jar (choose file which corresponds to your OP)
 		b) or call "java -jar university.jar" in cmd opened in /bin
-	2) if running a built app
-		a) double click on target/university-jar-with-dependencies.jar
-		b) or call "java -jar university-jar-with-dependencies.jar" in cmd opened in /target
+
