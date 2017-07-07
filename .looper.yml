@@ -1,0 +1,6 @@
+tools:
+  mvn: 3.5.0
+flows:
+  default:
+    mvn -B clean package
+ 
